@@ -66,6 +66,11 @@ public class BaseElement extends BaseEntity {
         return this;
     }
 
+    public BaseElement waitElementIsEnabled() {
+        waitForCondition(expectedCondition -> isEnabled(), String.format("Element with locator '%s' isn't enabled.", this.locator));
+        return this;
+    }
+
     public String getText()
     {
         waitElementIsVisible();

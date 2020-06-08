@@ -24,7 +24,9 @@ public class ResultsPage extends GoDevBasePage {
     }
 
     public void selectPackage(String packageName) {
-        var packageElement = new Element(By.xpath(String.format(packageLocator, packageName))).getElement();
-        new Actions(browser.driver).moveToElement(packageElement).click(packageElement).build().perform();
+        var packageElement = new Element(By.xpath(String.format(packageLocator, packageName)));
+        packageElement.waitElementIsVisible();
+        packageElement.waitElementIsEnabled();
+        new Actions(browser.driver).moveToElement(packageElement.getElement()).click(packageElement.getElement()).build().perform();
     }
 }
